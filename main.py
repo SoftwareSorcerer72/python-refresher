@@ -227,3 +227,160 @@ while my_random_number != 5:
     my_random_number = random.randint(0, 9)
 
 print('Ending random number:', my_random_number)  # Output: Ending random number: 5
+
+
+# Extending the Python reference script
+
+# List Operations
+print('\n--- List Operations ---')
+fruits = ['apple', 'banana', 'cherry']
+print(fruits)  # Output: ['apple', 'banana', 'cherry']
+fruits.append('orange')
+print(fruits)  # Output: ['apple', 'banana', 'cherry', 'orange']
+fruits.remove('banana')
+print(fruits)  # Output: ['apple', 'cherry', 'orange']
+
+# Tuple Unpacking
+print('\n--- Tuple Unpacking ---')
+coordinates = (10, 20)
+x, y = coordinates
+print(f'X: {x}, Y: {y}')  # Output: X: 10, Y: 20
+
+# Dictionary Manipulation
+print('\n--- Dictionary Manipulation ---')
+person = {'name': 'John', 'age': 30}
+print(person)  # Output: {'name': 'John', 'age': 30}
+person['city'] = 'New York'
+print(person)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+del person['age']
+print(person)  # Output: {'name': 'John', 'city': 'New York'}
+
+# Set Operations
+print('\n--- Set Operations ---')
+a = {1, 2, 3, 4}
+b = {3, 4, 5, 6}
+print(a.union(b))  # Output: {1, 2, 3, 4, 5, 6}
+print(a.intersection(b))  # Output: {3, 4}
+
+# Comprehensions
+print('\n--- Comprehensions ---')
+squared = [x**2 for x in range(10)]
+print(squared)  # Output: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+
+# Function Arguments
+print('\n--- Function Arguments ---')
+def greet_person(name, greeting='Hello'):
+    print(f'{greeting}, {name}!')
+greet_person('Alice')  # Output: Hello, Alice!
+greet_person('Bob', 'Howdy')  # Output: Howdy, Bob!
+
+# File Handling
+print('\n--- File Handling ---')
+with open('example.txt', 'w') as file:
+    file.write('Hello, file!')
+# Note: This writes 'Hello, file!' to example.txt. No output to console.
+
+# Class and Inheritance
+print('\n--- Class and Inheritance ---')
+class Animal:
+    def speak(self):
+        print('Animal speaks')
+
+class Dog(Animal):
+    def speak(self):
+        print('Dog barks')
+
+pet = Dog()
+pet.speak()  # Output: Dog barks
+
+# Exception Handling
+print('\n--- Exception Handling ---')
+try:
+    1 / 0
+except ZeroDivisionError:
+    print('Cannot divide by zero!')  # Output: Cannot divide by zero!
+
+# Lambda Functions
+print('\n--- Lambda Functions ---')
+adder = lambda x, y: x + y
+print(adder(5, 3))  # Output: 8
+
+# Working with JSON
+import json
+print('\n--- Working with JSON ---')
+person_json = '{"name": "John", "age": 30, "city": "New York"}'
+person_dict = json.loads(person_json)
+print(person_dict)  # Output: {'name': 'John', 'age': 30, 'city': 'New York'}
+
+
+
+print('\n--- Big O Notation ---')
+# O(1) - Constant Time: An operation that takes the same amount of time, regardless of the input size.
+def constant_time_operation(items):
+    return items[0] if items else 'No items'
+
+# O(n) - Linear Time: An operation's time grows linearly with the increase in input size.
+def linear_search(items, target):
+    for i in range(len(items)):
+        if items[i] == target:
+            return i
+    return -1
+
+# Example usage
+items = [2, 4, 6, 8, 10]
+print(constant_time_operation(items))  # Output: 2 (First element)
+print(linear_search(items, 8))  # Output: 3 (Index of element 8)
+
+
+print('\n--- Binary Search Tree ---')
+
+class TreeNode:
+    def __init__(self, key):
+        self.left = None
+        self.right = None
+        self.val = key
+
+def insert(root, key):
+    if root is None:
+        return TreeNode(key)
+    else:
+        if root.val < key:
+            root.right = insert(root.right, key)
+        else:
+            root.left = insert(root.left, key)
+    return root
+
+def inorder_traversal(root):
+    if root:
+        inorder_traversal(root.left)
+        print(root.val, end=' ')
+        inorder_traversal(root.right)
+
+# Example usage
+root = TreeNode(10)
+insert(root, 5)
+insert(root, 15)
+insert(root, 2)
+insert(root, 7)
+print("Inorder traversal of BST: ", end='')
+inorder_traversal(root)  # Output: 2 5 7 10 15
+
+
+
+print('\n--- Nodes ---')
+
+class ListNode:
+    def __init__(self, data=0, next_node=None):
+        self.data = data
+        self.next = next_node
+
+# Example usage
+head = ListNode(1)
+head.next = ListNode(2)
+head.next.next = ListNode(3)
+
+# Traverse and print the list
+current = head
+while current:
+    print(current.data, end=' ')
+    current = current.next  # Output: 1 2 3
